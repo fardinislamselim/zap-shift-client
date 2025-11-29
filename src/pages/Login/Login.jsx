@@ -1,21 +1,27 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import Logo from "../../components/Logo/Logo";
 
 const Login = () => {
+  const { signInUser, signInGoogle } = useAuth();
+
+  const location = useLocation();
+  const naviget = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { signInUser, signInGoogle } = useAuth();
-
   const onSubmit = (data) => {
     signInUser(data.email, data.password)
-      .then((result) => console.log(result.user))
+      .then(() => {
+        naviget(location?.state || "/");
+      })
       .catch((err) => console.log(err.message));
   };
 

@@ -9,19 +9,19 @@ const Navbar = () => {
   const navLink = (
     <>
       <li>
-        <NavLink> Services</NavLink>
+        <NavLink to={"services"}> Services</NavLink>
       </li>
       <li>
-        <NavLink> Coverage </NavLink>
+        <NavLink to={"coverage"}> Coverage </NavLink>
       </li>
       <li>
-        <NavLink> Pricing </NavLink>
+        <NavLink to={"pricing"}> Pricing </NavLink>
       </li>
       <li>
-        <NavLink> Blog </NavLink>
+        <NavLink to={"sendParcel"}> Send Parcel </NavLink>
       </li>
       <li>
-        <NavLink> Contact </NavLink>
+        <NavLink to={"rider"}> Be A rider </NavLink>
       </li>
     </>
   );
@@ -69,11 +69,14 @@ const Navbar = () => {
             </button>
           ) : (
             <>
-              <Link to="/login" className="btn btn-primary mr-2 text-black">
+              <Link
+                to="/login"
+                className="btn btn-primary btn-outline mr-2 text-black"
+              >
                 Sign in
               </Link>
-              <Link to="/register" className="btn btn-outline btn-primary text-black">
-                Sign Up
+              <Link to="/be-a-rider" className="btn  btn-primary text-black">
+                Be A Rider
               </Link>
             </>
           )}

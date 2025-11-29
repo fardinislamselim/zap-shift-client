@@ -10,3 +10,7 @@
   --color-secondary: #03373D;
   --color-accent: #8FA748;
 }
+
+a.active{
+  @apply text-green-600 underline underline-offset-2
+}
