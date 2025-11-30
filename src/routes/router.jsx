@@ -7,6 +7,8 @@ import Register from "../pages/Register/Register";
 import PrivetRout from "./PrivetRout";
 import Rider from "../pages/Rider/Rider";
 import SendParcel from "../pages/sendParcel/SendParcel";
+import DashboardLayout from "../layout/DashboardLayout";
+import MyParcels from "../pages/Deshboard/MyParcels/MyParcels";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +26,6 @@ export const router = createBrowserRouter([
             <Rider></Rider>
           </PrivetRout>
         ),
-        
       },
       {
         path: "sendParcel",
@@ -33,8 +34,7 @@ export const router = createBrowserRouter([
             <SendParcel></SendParcel>
           </PrivetRout>
         ),
-        loader:()=>fetch("/warehouses.json")
-
+        loader: () => fetch("/warehouses.json"),
       },
     ],
   },
@@ -43,13 +43,26 @@ export const router = createBrowserRouter([
     Component: AuthLayout,
     children: [
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "deshboard",
+    element: (
+      <PrivetRout>
+        <DashboardLayout />
+      </PrivetRout>
+    ),
+    children:[
+      {path:"my-parcels",
+        Component:MyParcels
+      }
+    ]
   },
 ]);

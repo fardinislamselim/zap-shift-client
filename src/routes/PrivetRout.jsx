@@ -2,17 +2,29 @@ import React from "react";
 import useAuth from "../hooks/useAuth";
 import { Navigate, useLocation } from "react-router";
 
-const PrivetRout = ({ children }) => {
-  const { user, loadin } = useAuth();
-  const location = useLocation()
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  const location = useLocation();
 
-  {
-    loadin && "loading";
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-ring loading-xl"></span>
+      </div>
+    );
   }
-  if (!user) {
-    return <Navigate state={location.pathname} to="/login"></Navigate>;
+
+  if (user) {
+    return children;
   }
-  return <div>{children}</div>;
+
+  return (
+    <Navigate
+      to="/login"
+      state={{ from: location }}
+      replace
+    />
+  );
 };
 
-export default PrivetRout;
+export default PrivateRoute;
