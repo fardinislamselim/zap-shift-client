@@ -25,7 +25,6 @@ const MyParcels = () => {
       const res = await axiosSecure.get(`/parcels?email=${user.email}`);
       return res.data;
     },
-    enabled: !!user?.email,
   });
 
   const handleDelete = (id) => {
@@ -52,24 +51,6 @@ const MyParcels = () => {
       }
     });
   };
-
-  // Placeholder for the Pay button handler
-  // const handlePay = (parcel) => {
-  //   // In a real application, this would redirect the user to a payment page (e.g., Stripe, PayPal)
-  //   // or open a payment modal with the parcel's price and details.
-  //   console.log(
-  //     "Initiating payment for parcel:",
-  //     parcel._id,
-  //     "Price:",
-  //     parcel.price
-  //   );
-  //   alert(
-  //     `Redirecting to payment for Parcel ID: ${parcel._id} (Price: $${parcel.price})`
-  //   );
-
-  //   // After successful payment, you would call refetch() to update the table data.
-  //   // e.g., if (paymentSuccess) { refetch(); }
-  // };
 
   // --- Conditional Rendering ---
 

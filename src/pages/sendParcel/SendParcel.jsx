@@ -68,6 +68,7 @@ const SendParcel = () => {
       cost: cost,
       bookingDate: new Date().toISOString(),
       status: 'pending',
+      paymentStatus: 'unpaid',
       senderEmail: user?.email
     };
 
